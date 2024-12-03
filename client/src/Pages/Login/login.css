@@ -1,0 +1,186 @@
+
+
+/* Start Login  */
+
+.main-login{
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    height: 100vh;
+    width: 100%;
+}
+
+.main-login .left{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+@media(max-width : 550px){
+    .main-login .left{
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+}
+
+.main-login .left .sub-left{
+    margin: 100px auto;
+}
+
+
+.main-login .left .head{
+    display: flex;
+    align-items: center;
+}
+
+.main-login .left .head h1{
+    font-size: 19px;
+    color:#065ad8;
+    font-weight: bold;
+}
+
+.main-login .left .head .image img{
+    width: 70px;
+}
+
+.main-login .left  h2 {
+margin-top: 14px;
+font-size: 21px;
+margin-bottom: 10px;
+margin-left: 4px;
+font-weight: bold;
+}
+
+.main-login .left .sub-title{
+    color:#686d78;
+    font-weight: 400;
+    font-size: 12px;
+}
+
+.main-login .left .login-form{
+    margin-top: 20px;
+}
+
+.main-login .left .login-form .input-field{
+    /* #9b9ea6 */
+    width: 300px;
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    background-color: #fafbfe;
+    padding: 11px 12px;
+    border: 1px solid #EEE;
+    border-radius: 8px;
+    margin: 5px 0px;
+}
+
+.main-login .left .login-form .unvalid-input{
+    border-color:#dc3545 ;
+}
+
+.main-login .left .login-form .input-field input{
+    background-color: transparent;
+    color: gray;
+    border: none;
+    margin:0px 10px;
+    width: calc(100% - 20px);
+
+}
+
+.main-login .left .login-form .input-field svg{
+    width: 20px;
+}
+
+.main-login .left .login-form .input-field input:focus{
+    outline: none;
+
+}
+
+.main-login .left .login-form .input-pass img{
+    width: 20px;
+}
+
+.main-login .left .login-form .input-pass{
+    justify-content: space-between;
+    
+}
+
+.main-login .left .login-form .input-pass input{
+    width: calc(100% - 20px);
+}
+
+
+
+.main-login .left .login-form .input-pass .right-input{
+    width: 30px;
+}
+
+.main-login .left .login-form .input-pass .left{
+    display: flex;
+    width: calc(100% - 20px);
+    align-items: center;
+    flex-direction: row;
+}
+
+.main-login .left .login-form .forget-password{
+    color: var(--main-color);
+    padding: 5px 0px;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.main-login .right{
+    width: 50%;
+    background-color: var(--main-color);
+    
+}
+
+.main-login .left .login-form .btn-login {
+    background-color: var(--main-color);
+    padding: 12px 22px;
+    width: 100%;
+    border-radius: 8px;
+    border: none;
+    color: white;
+    font-weight: bold;
+    margin-top: 20px;
+    transition: var(--main-transition);
+    cursor: pointer;
+}
+
+.main-login .left .login-form .btn-login:hover{
+    background-color: #3882f1;
+}
+
+.main-login .valid-message{
+    visibility: hidden;
+    opacity: 0;
+    transition: var(--main-transition);
+    color: #dc3545;
+}
+
+.main-login .valid-active-message{
+visibility: visible;
+opacity: 1;
+}
+
+
+.right{
+    display:  flex;
+    justify-content:  center;
+    align-items: center;
+}
+
+.right img {
+    width: 500px;
+    height: 500px;
+}
+
+@media(max-width : 550px){
+    .right{
+        display: none;
+    }
+}
+
+
+/* End Login  */

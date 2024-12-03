@@ -1,0 +1,22 @@
+
+
+/* Start Gloabl Rule */
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+
+:root{
+  --background-color : #f3f6f8 ;
+  --main-color : #1958f7 ;
+  --top-padding : 25px;
+  --gray-color : #b1b2b3 ; 
+  --main-transition : .3s;
+  --message-btn : #009570 ;
+
+}
+
+/* End Gloabl Rule */

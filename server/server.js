@@ -10,7 +10,6 @@ import template from "../template";
 const app = express();
 app.use(json());
 
-// Initialize Sequelize and connect to the MariaDB database
 connectDB();
 app.use(json());
 app.use(urlencoded({ extended: true }));

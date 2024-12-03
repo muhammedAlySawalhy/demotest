@@ -3,9 +3,7 @@ import mongoose from "mongoose";
 
 const connectDB = () => {
   mongoose
-    .connect(config.mongouri, {
-      dbName: "HRSystem",
-    })
+    .connect(config.mongouri, { dbName: "HRSystem" })
     .then(() => {
       console.log("Connected to MongoDB");
     })

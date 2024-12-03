@@ -30,10 +30,10 @@ app.post("/register", async (req, res) => {
   try {
     const existingUser = await User.findOne({ email });
     if (existingUser) {
-      return res.status(400).json({ error: "Username already taken" });
+      return res.status(400).json({ error: "email already taken" });
     }
     const hashedPassword = await hash(password, 10);
-    const newUser = await User.create({ username, password: hashedPassword });
+    const newUser = await User.create({ email, password: hashedPassword });
 
     res
       .status(201)
@@ -51,17 +51,17 @@ app.post("/login", async (req, res) => {
   try {
     const user = await User.findOne({ email });
     if (!user) {
-      return res.status(401).json({ message: "Invalid username or password" });
+      return res.status(401).json({ message: "Invalid email or password" });
     }
 
     const passwordMatch = await compare(password, user.password);
     if (!passwordMatch) {
-      return res.status(401).json({ message: "Invalid username or password" });
+      return res.status(401).json({ message: "Invalid email or password" });
     }
 
     res.status(200).json({
       message: "Login successful",
-      user: { id: user._id, username: user.username },
+      user: { id: user._id, email: user.email },
     });
   } catch (error) {
     res.status(500).json({ error: "Error logging in", details: error.message });

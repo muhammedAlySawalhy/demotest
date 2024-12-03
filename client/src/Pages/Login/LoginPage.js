@@ -3,33 +3,16 @@ import "./login.css";
 import LogoPic from "./../../Images/newLogo-removebg-preview.png";
 import officiePic from "./../../Images/login.png";
 import lockPic from "./../../Images/padlock.png";
-import { Link } from "react-router-dom"; // Use "react-router-dom" instead of "react-router" for navigation
-const registerURL = "http://localhost:3000/register"; // Corrected URL with "http://"
-const loginURL = "http://localhost:3000/login"; // Corrected URL for login
 
-// Function to create a new user
-const createUser = async (email, password) => {
-  try {
-    const response = await fetch(registerURL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email, password }),
-    });
-    const data = await response.json();
-    if (response.ok) {
-      console.log("User created successfully");
-    } else {
-      console.error("Failed to create user:", data.message);
-    }
-  } catch (error) {
-    console.error("Error while creating user:", error);
-  }
-};
+const loginURL = "http://localhost:4000/login";
 
 // Function to handle login
-const handelLogin = async (email, password) => {
+const handelLogin = async (
+  email,
+  password,
+  setModalMessage,
+  setModalVisible
+) => {
   try {
     const response = await fetch(loginURL, {
       method: "POST",
@@ -38,33 +21,32 @@ const handelLogin = async (email, password) => {
       },
       body: JSON.stringify({ email, password }),
     });
-    const data = await response.json();
 
     if (response.ok) {
-      console.log("Login successful");
-      // Redirect to dashboard or home page upon successful login
-      window.location.href = "/dashboard"; // Adjust the redirection path as needed
+      // Show success message and redirect after a delay
+      setModalMessage("Logged in successfully!");
+      setModalVisible(true);
     } else {
-      console.error("Invalid login credentials:", data.message);
+      // Show error message for invalid credentials
+      setModalMessage("Invalid email or password.");
+      setModalVisible(true);
     }
   } catch (error) {
     console.error("Error during login:", error);
+    setModalMessage("An error occurred. Please try again.");
+    setModalVisible(true);
   }
 };
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [modalVisible, setModalVisible] = useState(false);
+  const [modalMessage, setModalMessage] = useState("");
 
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
-    // Attempt to log in the user
-    await handelLogin(email, password);
-  };
-
-  const handleCreateUser = async () => {
-    // Check if user exists, if not, create the user
-    await createUser(email, password);
+    await handelLogin(email, password, setModalMessage, setModalVisible);
   };
 
   return (
@@ -77,7 +59,7 @@ const LoginPage = () => {
             </div>
             <h1>Login System</h1>
           </div>
-          <h2>Log in to your Account </h2>
+          <h2>Log in to your Account</h2>
           <p className="sub-title">Welcome back!</p>
           <form className="login-form" onSubmit={handleLoginSubmit}>
             <div className={`input-field`}>
@@ -116,22 +98,8 @@ const LoginPage = () => {
               Please Enter Valid Password..
             </p>
 
-            <div>
-              <Link to={"/forgetpassword"} className="forget-password">
-                Forget Password{" "}
-              </Link>
-            </div>
-
             <button type="submit" className="btn-login">
               Log in
-            </button>
-
-            <button
-              type="button"
-              onClick={handleCreateUser}
-              className="btn-create-user"
-            >
-              Create New User
             </button>
           </form>
         </div>
@@ -140,6 +108,21 @@ const LoginPage = () => {
       <div className="right">
         <img src={officiePic} alt="login" />
       </div>
+
+      {/* Modal for login success or failure */}
+      {modalVisible && (
+        <div className="modal">
+          <div className="modal-content">
+            <p>{modalMessage}</p>
+            <button
+              onClick={() => setModalVisible(false)}
+              className="modal-close"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

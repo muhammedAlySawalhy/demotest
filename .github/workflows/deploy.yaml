@@ -31,4 +31,4 @@ jobs:
 
       # Step 5: Deploy the project
       - name: Run Deployment Script
-        run: node ./dist/server.generate.js
+        run: node ./dist/server.generated.js

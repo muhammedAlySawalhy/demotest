@@ -32,3 +32,30 @@ jobs:
       # Step 5: Deploy the project
       - name: Run Deployment Script
         run: npm run start
+
+      # Final Step: Run background server in GitHub Actions (optional)
+      # This ensures the server runs in the background without blocking the workflow
+      - name: Start Server in Background
+        run: |
+          nohup npm run start &
+
+      # Final Step: Wait for the server to be up and running (optional)
+      - name: Wait for Server
+        run: sleep 10  # Adjust time to ensure the server has enough time to start
+
+      # Step 6: Run tests or health checks after deployment (optional)
+      - name: Run Health Check
+        run: curl --silent --fail http://localhost:4000/health || exit 1
+
+      # Step 7: Notify (optional) - Notify via Slack, Email, etc.
+      # Uncomment the following if you want to send a notification on success
+      # - name: Send Success Notification
+      #   uses: some-notification-action@v1
+      #   with:
+      #     message: "Deployment successful!"
+
+      # Final Step: Clean up (optional)
+      - name: Clean up
+        run: |
+          echo "Cleaning up after deployment"
+          # Add any necessary clean-up commands here (e.g., removing temporary files)

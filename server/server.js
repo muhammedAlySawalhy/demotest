@@ -26,9 +26,9 @@ app.get("/", (req, res) => {
 
 // Endpoint to register a new user
 app.post("/register", async (req, res) => {
-  const { username, password } = req.body;
+  const { email, password } = req.body;
   try {
-    const existingUser = await User.findOne({ username });
+    const existingUser = await User.findOne({ email });
     if (existingUser) {
       return res.status(400).json({ error: "Username already taken" });
     }
@@ -47,9 +47,9 @@ app.post("/register", async (req, res) => {
 
 // Endpoint to log in
 app.post("/login", async (req, res) => {
-  const { username, password } = req.body;
+  const { email, password } = req.body;
   try {
-    const user = await User.findOne({ username });
+    const user = await User.findOne({ email });
     if (!user) {
       return res.status(401).json({ message: "Invalid username or password" });
     }

@@ -16,7 +16,7 @@
   \**************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst config = {\n  env: \"development\" || 0,\n  port: process.env.port || 3000,\n  host: process.env.host || \"localhost\",\n  mongouri: \"mongodb+srv://muh_aly:M1u2h3a4@123@cluster0.ulf93yo.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0\",\n  mariauri: process.env.mariauri || \"mysql://root:password@localhost:3306/mydatabase\",\n  secret: process.env.secret || \"StrongSecretKey\"\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (config);\n\n//# sourceURL=webpack:///./config/config.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst config = {\n  env: \"development\" || 0,\n  port: process.env.port || 3000,\n  host: process.env.host || \"localhost\",\n  mongouri: \"mongodb://muh_aly:M1u2h3a4@123@cluster0.ulf93yo.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0\",\n  mariauri: process.env.mariauri || \"mysql://root:password@localhost:3306/mydatabase\",\n  secret: process.env.secret || \"StrongSecretKey\"\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (config);\n\n//# sourceURL=webpack:///./config/config.js?");
 
 /***/ }),
 
